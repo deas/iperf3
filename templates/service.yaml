@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "tcp-drain.fullname" . }}
+  labels:
+{{ include "tcp-drain.labels" . | indent 4 }}
+{{- if .Values.service.annotations }}
+  annotations:
+{{ toYaml .Values.service.annotations | indent 4 }}
+{{- end }}
+
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: drain
+      protocol: TCP
+      name: drain
+  selector:
+    app.kubernetes.io/name: {{ include "tcp-drain.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}

@@ -1,0 +1,1 @@
+Dump stuff at $SERVICE_IP:{{ .Values.service.port }}
