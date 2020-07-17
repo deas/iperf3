@@ -40,8 +40,17 @@ service:
   type: ClusterIP
   annotiations: {}
   #type: LoadBalancer
+  # TODO: Health check must be disabled - not sure how this is done with the openstack version
   #annotations:
   #  service.beta.kubernetes.io/openstack-internal-load-balancer: "true"
+  #annotations:
+  #  kubernetes.io/elb.class: union
+  #  kubernetes.io/session-affinity-mode: SOURCE_IP
+  #  kubernetes.io/elb.subnet-id: 5083f225-9bf8-48fa-9c8b-67bd9693c4c0
+  #  kubernetes.io/elb.autocreate: '{"type":"inner"}'
+  #  kubernetes.io./elb.health-check-flag: 'off'
+  #  # kubernetes.io/elb.autocreate: "{\"type\":\"public\",\"bandwidth_name\":\"cce-bandwidth-1551163379627\",\"bandwidth_chargemode\":\"traffic\",\"bandwidth_size\":5,\"bandwidth_sharetype\":\"PER\",\"eip_type\":\"5_bgp\",\"name\":\"james\"}"
+
   port: 5201
 
 resources: {}
